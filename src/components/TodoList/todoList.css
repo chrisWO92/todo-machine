@@ -1,14 +1,16 @@
 /*----------------- MEDIA QUERIES ------------------*/
 
-#root {
-  width: 35%;
-  padding: 3vw;
-  background-color: #7986CB;
-  border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+#task-list {
+    width: 70%;
+}
+
+.msg {
+    margin-bottom: 1.5vh;
+    color: white;
+}
+
+.error {
+    color: #EF5350;
 }
 
 /*========== BIG NOTEBOOKS ===========*/

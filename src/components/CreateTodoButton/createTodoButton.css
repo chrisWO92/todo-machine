@@ -1,15 +1,23 @@
 /*----------------- MEDIA QUERIES ------------------*/
 
-#root {
-  width: 35%;
-  padding: 3vw;
-  background-color: #7986CB;
-  border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+#create-task-button {
+    font-size: 3.5vw;
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #1A237E;
+    color: white;
+    transition: all 0.5s;
 }
+
+#create-task-button:hover {
+    transform: scale(1.1);
+    background: #304FFE;
+}
+
 
 /*========== BIG NOTEBOOKS ===========*/
 @media screen and (max-width: 1300px) and (orientation: landscape) {

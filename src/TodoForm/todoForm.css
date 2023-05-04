@@ -1,0 +1,87 @@
+/*----------------- MEDIA QUERIES ------------------*/
+  
+form {
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5vh 4.5vw;
+    background-color: #536DFE;
+}
+
+label {
+    margin-bottom: 2vh;
+    font-size: 2.3vh;
+}
+
+textarea {
+    border-radius: 0.5rem;
+    text-align: center;
+    font-size: 2vh;
+    padding: 1vh 1vw;
+}
+
+#buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6vw;
+    margin-top: 2vh;
+}
+
+.button {
+    padding: 1vh 1.1vw;
+    border-radius: 0.3rem;
+    font-size: 0.8vw;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+#cancel-button:hover {
+    background: #EF5350;
+    color: white;
+    transform: scale(1.1);
+}
+
+#add-button:hover {
+    background: #009688;
+    color: white;
+    transform: scale(1.1);
+}
+
+/*========== BIG NOTEBOOKS ===========*/
+@media screen and (max-width: 1300px) and (orientation: landscape) {
+
+
+}
+
+
+/*========== SMALL NOTEBOOKS ===========*/
+@media screen and (max-width: 1050px) and (orientation: landscape) {
+
+
+}
+
+
+
+/*========== BIG TABLETS ===========*/
+@media screen and (max-width: 1400px) and (orientation: portrait) {
+
+
+
+}
+
+/*========== SMALL TABLETS ===========*/
+@media screen and (max-width: 820px)and (orientation: portrait) {
+
+
+
+}
+
+/*========== SMARTPHONES ===========*/
+@media screen and (max-width: 420px) and (orientation: portrait) {
+
+
+
+}
