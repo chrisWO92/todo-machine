@@ -10,7 +10,7 @@ const TodoSearch = () => {
       <div id="search-wrapper">
         <input
           type="text"
-          placeholder="Enter key search hola"
+          placeholder="Enter key search"
           id="search"
           value={valueSearch}
           onChange={onSearchValueChange}

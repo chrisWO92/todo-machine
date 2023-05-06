@@ -2,11 +2,13 @@
   
 form {
     border-radius: 1rem;
+    width: 35vw;
+    height: 49vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 5vh 4.5vw;
+    padding: 2vh 3vw;
     background-color: #536DFE;
 }
 
@@ -17,6 +19,7 @@ label {
 
 textarea {
     border-radius: 0.5rem;
+    width: 90%;
     text-align: center;
     font-size: 2vh;
     padding: 1vh 1vw;
@@ -26,14 +29,14 @@ textarea {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 0.6vw;
+    gap: 2.5vw;
     margin-top: 2vh;
 }
 
 .button {
     padding: 1vh 1.1vw;
     border-radius: 0.3rem;
-    font-size: 0.8vw;
+    font-size: 1.2vw;
     cursor: pointer;
     transition: all 0.5s;
 }
@@ -60,15 +63,30 @@ textarea {
 /*========== SMALL NOTEBOOKS ===========*/
 @media screen and (max-width: 1050px) and (orientation: landscape) {
 
+    form {
+        width: 35vw;
+        height: 51vh;
+    }
 
 }
-
 
 
 /*========== BIG TABLETS ===========*/
 @media screen and (max-width: 1400px) and (orientation: portrait) {
 
+    form {
+        width: 75vw;
+        height: 51vh;
+    }
 
+    #buttons {
+        gap: 5vw;
+    }
+
+    .button {
+        padding: 1.4vh 2vw;
+        font-size: 3vw;
+    }
 
 }
 
@@ -82,6 +100,22 @@ textarea {
 /*========== SMARTPHONES ===========*/
 @media screen and (max-width: 420px) and (orientation: portrait) {
 
+    form {
+        width: 90vw;
+        height: 50vh;
+    }
 
+    #buttons {
+        gap: 7vw;
+    }
+
+    .button {
+        padding: 1.4vh 3vw;
+        font-size: 4vw;
+    }
+
+    textarea {
+        font-size: 2vh;
+    }
 
 }

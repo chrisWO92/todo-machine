@@ -29,7 +29,9 @@
 /*========== BIG TABLETS ===========*/
 @media screen and (max-width: 1400px) and (orientation: portrait) {
 
-
+  #root {
+    width: 70%;
+  }
 
 }
 
@@ -43,6 +45,10 @@
 /*========== SMARTPHONES ===========*/
 @media screen and (max-width: 420px) and (orientation: portrait) {
 
-
+  #root {
+    width: 88%;
+    padding: 6vw 3vw;
+    background-color: #7986CB;
+  }
 
 }

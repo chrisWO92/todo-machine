@@ -8,7 +8,7 @@ const TodoCounter = () => {
   return (
     <>
       <h2 className="todocounter">
-        Has completado {completedTodos} de {totalTodos} tareas
+        You have completed {completedTodos} of {totalTodos} tasks
       </h2>
     </>
   );

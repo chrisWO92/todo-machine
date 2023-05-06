@@ -1,7 +1,7 @@
 /*----------------- MEDIA QUERIES ------------------*/
 
 .todocounter {
-    font-size: 2vw;
+    font-size: 1.6vw;
     text-align: center;
     margin: 0;
     margin-bottom: 2.5vh;
@@ -26,7 +26,10 @@
 /*========== BIG TABLETS ===========*/
 @media screen and (max-width: 1400px) and (orientation: portrait) {
 
-
+    .todocounter {
+        font-size: 3vw;
+        margin: 2vh 0 3vh 0;
+    }
 
 }
 
@@ -40,6 +43,9 @@
 /*========== SMARTPHONES ===========*/
 @media screen and (max-width: 420px) and (orientation: portrait) {
 
-
+    .todocounter {
+        font-size: 4vw;
+        margin: 2vh 0 2vh 0;
+    }
 
 }
