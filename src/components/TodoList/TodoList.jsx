@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import TodoItem from "../TodoItem/TodoItem";
 import "./todoList.css";
 import { TodoContext } from "../TodoContext/TodoContext";
+import Spiner from '../Spiner/Spiner'
 
 const TodoList = () => {
   const {
@@ -18,7 +19,7 @@ const TodoList = () => {
   return (
     <>
       <ul id="task-list">
-        {loading && <p className="msg">Cargando...</p>}
+        {loading && <Spiner />}
         {error && <p className="msg error">Error</p>}
         {!loading && !searchedTodos.length && (totalTodos !== 0) && <p className="msg">Sin coincidencias!</p>}
         {!loading && (totalTodos === 0) && <p className="msg">Agrega la primera tarea!</p>}

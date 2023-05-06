@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import "./todoForm.css";
-import { TodoContext } from "../components/TodoContext/TodoContext";
+import { TodoContext } from "../TodoContext/TodoContext";
 
 const TodoForm = () => {
   const { onSubmit, onCancel, taskTextHandler } =
