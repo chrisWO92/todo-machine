@@ -3,17 +3,20 @@
 .task {
     border-radius: 0.4rem;
     background-color: #3949AB;
+    height: 6vh;
     color: white;
     padding: 1.5vh;
     margin-bottom: 2vh;
     display: flex;
     justify-content: space-between;
+    
 }
 
 .task-text {
     text-align: start;
     width: 100%;
-    margin-left: 0.8vw;
+    margin: auto 0;
+    margin-left: 1vw;
     font-size: 1vw;
 }
 

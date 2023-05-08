@@ -6,6 +6,7 @@ import CreateTodoButton from "./components/CreateTodoButton/CreateTodoButton";
 import Modal from "./components/Modal/Modal";
 import { TodoContext } from "./components/TodoContext/TodoContext";
 
+
 const AppUI = () => {
   const { showModal } = useContext(TodoContext);
   return (
@@ -15,7 +16,7 @@ const AppUI = () => {
       <TodoList />
       {
         showModal && <Modal />
-      }             
+      }          
       <CreateTodoButton />
     </>
   );

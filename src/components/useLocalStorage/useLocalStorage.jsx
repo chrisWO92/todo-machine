@@ -19,7 +19,7 @@ const useLocalStorage = (itemName, defaultValue) => {
         }
         setItem(parsedItem);
         setLoading(false);
-      }, 1000);
+      }, 3000);
     } catch (err) {
       setError(err);
     }
