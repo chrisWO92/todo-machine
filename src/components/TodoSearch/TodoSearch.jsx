@@ -2,9 +2,7 @@ import React, { useContext } from "react";
 import "./todoSearch.css";
 import { TodoContext } from "../TodoContext/TodoContext";
 
-const TodoSearch = () => {
-  const { valueSearch, onSearchValueChange } = useContext(TodoContext);
-
+const TodoSearch = ({ valueSearch, onSearchValueChange }) => {
   return (
     <>
       <div id="search-wrapper">

@@ -1,12 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./todoItem.css";
 import { AiOutlineCheck } from "react-icons/ai";
 import { GiCancel } from "react-icons/gi";
-import { TodoContext } from "../TodoContext/TodoContext";
 
-const TodoItem = ({ text, complete }) => {
-  const { onComplete, onDelete } = useContext(TodoContext);
-
+const TodoItem = ({ text, complete, onComplete, onDelete }) => {
   return (
     <>
       <li className="task">

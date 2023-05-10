@@ -1,11 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./todoForm.css";
-import { TodoContext } from "../TodoContext/TodoContext";
 
-const TodoForm = () => {
-  const { onSubmit, onCancel, taskTextHandler } =
-    useContext(TodoContext);
-
+const TodoForm = ({ onSubmit, onCancel, taskTextHandler }) => {
   return (
     <form onSubmit={onSubmit}>
       <label>Agrega una nueva tarea</label>
