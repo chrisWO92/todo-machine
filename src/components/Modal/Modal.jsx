@@ -3,11 +3,11 @@ import ReactDOM from "react-dom";
 import "./modal.css";
 import TodoForm from "../TodoForm/TodoForm";
 
-const Modal = () => {
+const Modal = ({children}) => {
   
   return ReactDOM.createPortal(
     <div className='modalBackground'>
-        <TodoForm />
+        {children}
     </div>,
     document.getElementById("modal")
   );
