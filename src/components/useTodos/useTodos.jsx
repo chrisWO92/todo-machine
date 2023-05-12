@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocalStorage } from "../useLocalStorage/useLocalStorage";
 
-const TodoContext = React.createContext();
-
-const TodoProvider = (props) => {
+const useTodos = () => {
   const {
     item: todos,
     saveItem: saveTodos,
@@ -80,37 +78,31 @@ const TodoProvider = (props) => {
   };
 
   const createButtonHandler = () => {
-    setValueSearch("")
+    setValueSearch("");
     setShowModal((prevState) => !prevState);
-  }
+  };
 
-  return (
-    <TodoContext.Provider
-      value={{
-        todos,
-        searchedTodos,
-        completedTodos,
-        totalTodos,
-        valueSearch,
-        setValueSearch,
-        onSearchValueChange,
-        saveTodos,
-        loading,
-        error,
-        onComplete,
-        onDelete,
-        showModal,
-        setShowModal,
-        onAdd,
-        onCancel,
-        taskTextHandler,
-        onSubmit,
-        createButtonHandler
-      }}
-    >
-      {props.children}
-    </TodoContext.Provider>
-  );
+  return {
+    todos,
+    searchedTodos,
+    completedTodos,
+    totalTodos,
+    valueSearch,
+    setValueSearch,
+    onSearchValueChange,
+    saveTodos,
+    loading,
+    error,
+    onComplete,
+    onDelete,
+    showModal,
+    setShowModal,
+    onAdd,
+    onCancel,
+    taskTextHandler,
+    onSubmit,
+    createButtonHandler,
+  };
 };
 
-export { TodoProvider, TodoContext };
+export { useTodos };

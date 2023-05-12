@@ -1,22 +1,83 @@
 import React from "react";
 import "./App.css";
-import AppUI from "./AppUI";
-import { TodoProvider } from "./components/TodoContext/TodoContext";
+import TodoHeader from "./components/TodoHeader/TodoHeader";
+import TodoCounter from "./components/TodoCounter/TodoCounter";
+import TodoSearch from "./components/TodoSearch/TodoSearch";
+import TodoList from "./components/TodoList/TodoList";
+import TodoLoading from "./components/TodoLoading/TodoLoading";
+import TodoItem from "./components/TodoItem/TodoItem";
+import CreateTodoButton from "./components/CreateTodoButton/CreateTodoButton";
+import Modal from "./components/Modal/Modal";
+import TodoForm from "./components/TodoForm/TodoForm";
+import { useTodos } from "./components/useTodos/useTodos";
+import TodosLoading from "./components/TodosLoading/TodosLoading";
 
-/* const defaultTodos = [
-  { text: "hacer aseo", completed: false },
-  { text: "hacer comida", completed: false },
-  { text: "cuidar plantas", completed: false },
-  { text: "cuentas", completed: false },
-]; */
-
-function App() {
-
+const App = () => {
+  const {
+    showModal,
+    loading,
+    error,
+    searchedTodos,
+    totalTodos,
+    completedTodos,
+    onComplete,
+    onDelete,
+    valueSearch,
+    onSearchValueChange,
+    onSubmit,
+    onCancel,
+    taskTextHandler,
+    createButtonHandler
+  } = useTodos();
   return (
-    <TodoProvider>
-      <AppUI />
-    </TodoProvider>    
+    <>
+      <TodoHeader>
+        <TodoCounter 
+          totalTodos={totalTodos}
+          completedTodos={completedTodos}
+        />
+        <TodoSearch
+          valueSearch={valueSearch}
+          onSearchValueChange={onSearchValueChange}
+        />
+      </TodoHeader>
+      
+      <TodoList
+        loading={loading}
+        searchedTodos={searchedTodos}
+        error={error}
+        totalTodos={totalTodos}
+        onError={() => <p className="msg error">Error</p>}
+        onEmptySearch={() => <p className="msg">Sin coincidencias!</p>}
+        onAddFirstTask={() => <p className="msg">Agrega la primera tarea!</p>}
+        onLoading={() => <TodosLoading />}
+        render={(todo) => (
+          <TodoItem
+            key={todo.text}
+            text={todo.text}
+            complete={todo.completed}
+            onComplete={onComplete}
+            onDelete={onDelete}
+          />
+        )}
+      >
+      </TodoList>
+
+      {showModal && (
+        <Modal>
+          <TodoForm 
+            onSubmit={onSubmit}
+            onCancel={onCancel}
+            taskTextHandler={taskTextHandler}
+          />
+        </Modal>
+      )}
+
+      <CreateTodoButton 
+        createButtonHandler={createButtonHandler}
+      />
+    </>
   );
-}
+};
 
 export default App;
