@@ -1,7 +1,7 @@
 import React from "react";
 import "./todoSearch.css";
 
-const TodoSearch = ({ valueSearch, onSearchValueChange }) => {
+const TodoSearch = ({ valueSearch, onSearchValueChange, loading }) => {
   return (
     <>
       <div id="search-wrapper">
@@ -11,6 +11,7 @@ const TodoSearch = ({ valueSearch, onSearchValueChange }) => {
           id="search"
           value={valueSearch}
           onChange={onSearchValueChange}
+          disabled={loading}
         />
       </div>
     </>

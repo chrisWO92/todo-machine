@@ -8,6 +8,10 @@
     color: white;
 }
 
+.todocounter-loading {
+    opacity: 35%
+}
+
 /*========== BIG NOTEBOOKS ===========*/
 @media screen and (max-width: 1300px) and (orientation: landscape) {
   

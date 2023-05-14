@@ -11,6 +11,7 @@ import Modal from "./components/Modal/Modal";
 import TodoForm from "./components/TodoForm/TodoForm";
 import { useTodos } from "./components/useTodos/useTodos";
 import TodosLoading from "./components/TodosLoading/TodosLoading";
+import ChangeStorageWithListener from "./components/ChangeStorage/ChangeStorage";
 
 const App = () => {
   const {
@@ -27,18 +28,21 @@ const App = () => {
     onSubmit,
     onCancel,
     taskTextHandler,
-    createButtonHandler
+    createButtonHandler,
+    sincronize,
   } = useTodos();
   return (
     <>
-      <TodoHeader>
+      <TodoHeader loading={loading}>
         <TodoCounter 
           totalTodos={totalTodos}
           completedTodos={completedTodos}
+          //loading={loading}
         />
         <TodoSearch
           valueSearch={valueSearch}
           onSearchValueChange={onSearchValueChange}
+          //loading={loading}
         />
       </TodoHeader>
       
@@ -75,6 +79,10 @@ const App = () => {
 
       <CreateTodoButton 
         createButtonHandler={createButtonHandler}
+      />
+
+      <ChangeStorageWithListener 
+        sincronize={sincronize}
       />
     </>
   );

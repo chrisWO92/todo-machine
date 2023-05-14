@@ -2,6 +2,7 @@ import React from "react";
 import "./todoList.css";
 
 const TodoList = (props) => {
+  const renderFunc = props.children || props.render
   return (
     <>
       <ul id="task-list">
@@ -19,7 +20,7 @@ const TodoList = (props) => {
           props.onAddFirstTask()
         }
         {
-          props.searchedTodos.map(props.render)
+          !props.loading && props.searchedTodos.map(renderFunc)
         }
         
       </ul>

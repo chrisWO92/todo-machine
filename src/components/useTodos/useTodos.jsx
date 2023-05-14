@@ -7,12 +7,14 @@ const useTodos = () => {
     saveItem: saveTodos,
     loading,
     error,
+    sincronize
   } = useLocalStorage("TODOS_V1", []);
   const [completedTodos, setCompletedTodos] = useState(0);
   const [totalTodos, setTotalTodos] = useState(0);
   const [valueSearch, setValueSearch] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [newTextTodo, setNewTextTodo] = useState("");
+  
 
   let searchedTodos = [];
 
@@ -102,6 +104,7 @@ const useTodos = () => {
     taskTextHandler,
     onSubmit,
     createButtonHandler,
+    sincronize
   };
 };
 
