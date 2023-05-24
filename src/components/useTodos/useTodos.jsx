@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocalStorage } from "../useLocalStorage/useLocalStorage";
 
 const useTodos = () => {
+
   const {
     item: todos,
     saveItem: saveTodos,
@@ -36,6 +37,7 @@ const useTodos = () => {
       return todoText.includes(searchText);
     });
   }
+  
 
   const onComplete = (text, complete) => {
     complete = !complete;
@@ -84,27 +86,30 @@ const useTodos = () => {
     setShowModal((prevState) => !prevState);
   };
 
-  return {
-    todos,
+  const estados =  {
     searchedTodos,
     completedTodos,
     totalTodos,
     valueSearch,
-    setValueSearch,
-    onSearchValueChange,
-    saveTodos,
     loading,
     error,
-    onComplete,
-    onDelete,
     showModal,
-    setShowModal,
-    onAdd,
+  }
+
+  const actualizadores = {
+    onSearchValueChange,    
+    onComplete,
+    onDelete,    
     onCancel,
     taskTextHandler,
     onSubmit,
     createButtonHandler,
-    sincronize
+    sincronize,
+  }
+
+  return {
+    estados,
+    actualizadores
   };
 };
 

@@ -15,34 +15,40 @@ import ChangeStorageWithListener from "./components/ChangeStorage/ChangeStorage"
 
 const App = () => {
   const {
-    showModal,
+    estados, actualizadores
+  } = useTodos();
+
+  const { 
+    searchedTodos,
+    completedTodos,
+    totalTodos,
+    valueSearch,
     loading,
     error,
-    searchedTodos,
-    totalTodos,
-    completedTodos,
+    showModal,
+  } = estados
+
+  const {
+    onSearchValueChange,    
     onComplete,
-    onDelete,
-    valueSearch,
-    onSearchValueChange,
-    onSubmit,
+    onDelete,    
     onCancel,
     taskTextHandler,
+    onSubmit,
     createButtonHandler,
     sincronize,
-  } = useTodos();
+  } = actualizadores
+
   return (
     <>
       <TodoHeader loading={loading}>
         <TodoCounter 
           totalTodos={totalTodos}
           completedTodos={completedTodos}
-          //loading={loading}
         />
         <TodoSearch
           valueSearch={valueSearch}
           onSearchValueChange={onSearchValueChange}
-          //loading={loading}
         />
       </TodoHeader>
       
