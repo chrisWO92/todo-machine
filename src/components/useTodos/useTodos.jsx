@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { useLocalStorage } from "../useLocalStorage/useLocalStorage";
+import { useNavigate } from "react-router-dom";
 
 const useTodos = () => {
+
+  const navigate = useNavigate()
 
   const {
     item: todos,
@@ -9,11 +12,12 @@ const useTodos = () => {
     loading,
     error,
     sincronize
-  } = useLocalStorage("TODOS_V1", []);
+  } = useLocalStorage("TODOS_V2", []);
   const [completedTodos, setCompletedTodos] = useState(0);
   const [totalTodos, setTotalTodos] = useState(0);
   const [valueSearch, setValueSearch] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [editMode, setEditMode] = useState(false);
   const [newTextTodo, setNewTextTodo] = useState("");
   
 
@@ -22,6 +26,7 @@ const useTodos = () => {
   useEffect(() => {
     setCompletedTodos(todos.filter((todo) => !!todo.completed).length);
     setTotalTodos(todos.length);
+    //console.log(todos)
   }, [todos]);
 
   const onSearchValueChange = (e) => {
@@ -39,27 +44,38 @@ const useTodos = () => {
   }
   
 
-  const onComplete = (text, complete) => {
+  const onComplete = (id, complete) => {
+    console.log(id)
     complete = !complete;
-    let index = todos.findIndex((todo) => todo.text === text);
+    let index = todos.findIndex((todo) => todo.id === id);
+    console.log('index: ', index)
     const newTodos = [...todos];
+    console.log('newTodos: ', newTodos)
+    console.log('todos: ', todos)     
     newTodos[index].completed = !newTodos[index].completed;
     saveTodos(newTodos);
   };
 
-  const onDelete = (text) => {
-    let index = todos.findIndex((todo) => todo.text === text);
+  const onDelete = (id) => {
+    let index = todos.findIndex((todo) => todo.id === id);
     const newTodos = [...todos];
     newTodos.splice(index, 1);
     saveTodos(newTodos);
   };
 
+  const onEdit = () => {
+    setShowModal((prevState) => !prevState);
+  }
+
   const onAdd = (text) => {
+    
     if (text !== "") {
+      const id = newTodoId(todos);
       const newTodos = [...todos];
       newTodos.push({
         text: text,
         completed: false,
+        id
       });
       saveTodos(newTodos);
     }
@@ -70,6 +86,7 @@ const useTodos = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     onAdd(newTextTodo);
+    //navigate('/')
   };
 
   const taskTextHandler = (e) => {
@@ -77,12 +94,14 @@ const useTodos = () => {
   };
 
   const onCancel = () => {
-    setShowModal((prevState) => !prevState);
+    //setShowModal((prevState) => !prevState);
     setNewTextTodo("");
+    navigate('/')
   };
 
   const createButtonHandler = () => {
     setValueSearch("");
+    //navigate('/new')
     setShowModal((prevState) => !prevState);
   };
 
@@ -99,7 +118,8 @@ const useTodos = () => {
   const actualizadores = {
     onSearchValueChange,    
     onComplete,
-    onDelete,    
+    onDelete,
+    onEdit,    
     onCancel,
     taskTextHandler,
     onSubmit,
@@ -112,5 +132,14 @@ const useTodos = () => {
     actualizadores
   };
 };
+
+const newTodoId = (todoList) => {
+  if (!todoList.length){
+    return 1;
+  }
+  const idList = todoList.map(todo => todo.id)
+  const idMax = Math.max(...idList)
+  return idMax + 1
+}
 
 export { useTodos };

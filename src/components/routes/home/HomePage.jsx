@@ -1,24 +1,25 @@
 import React from "react";
-import "./App.css";
-import TodoHeader from "./components/TodoHeader/TodoHeader";
-import TodoCounter from "./components/TodoCounter/TodoCounter";
-import TodoSearch from "./components/TodoSearch/TodoSearch";
-import TodoList from "./components/TodoList/TodoList";
-import TodoLoading from "./components/TodoLoading/TodoLoading";
-import TodoItem from "./components/TodoItem/TodoItem";
-import CreateTodoButton from "./components/CreateTodoButton/CreateTodoButton";
-import Modal from "./components/Modal/Modal";
-import TodoForm from "./components/TodoForm/TodoForm";
-import { useTodos } from "./components/useTodos/useTodos";
-import TodosLoading from "./components/TodosLoading/TodosLoading";
-import ChangeStorageWithListener from "./components/ChangeStorage/ChangeStorage";
+import "../App.css";
+import TodoHeader from "../../ui/TodoHeader/TodoHeader";
+import TodoCounter from "../../ui/TodoCounter/TodoCounter";
+import TodoSearch from "../../ui/TodoSearch/TodoSearch";
+import TodoList from "../../ui/TodoList/TodoList";
+import TodoLoading from "../../ui/TodoLoading/TodoLoading";
+import TodoItem from "../../ui/TodoItem/TodoItem";
+import CreateTodoButton from "../../ui/CreateTodoButton/CreateTodoButton";
+import Modal from "../../ui/Modal/Modal";
+import TodoForm from "../../ui/TodoForm/TodoForm";
+import { useTodos } from "../../useTodos/useTodos";
+import TodosLoading from "../../ui/TodosLoading/TodosLoading";
+import ChangeStorageWithListener from "../../ui/ChangeStorage/ChangeStorage";
+import { Link } from "react-router-dom";
 
-const App = () => {
+const HomePage = () => {
   const {
     estados, actualizadores
   } = useTodos();
 
-  const { 
+  const {
     searchedTodos,
     completedTodos,
     totalTodos,
@@ -29,9 +30,10 @@ const App = () => {
   } = estados
 
   const {
-    onSearchValueChange,    
+    onSearchValueChange,
     onComplete,
-    onDelete,    
+    onDelete,
+    onEdit,
     onCancel,
     taskTextHandler,
     onSubmit,
@@ -42,7 +44,7 @@ const App = () => {
   return (
     <>
       <TodoHeader loading={loading}>
-        <TodoCounter 
+        <TodoCounter
           totalTodos={totalTodos}
           completedTodos={completedTodos}
         />
@@ -51,7 +53,7 @@ const App = () => {
           onSearchValueChange={onSearchValueChange}
         />
       </TodoHeader>
-      
+
       <TodoList
         loading={loading}
         searchedTodos={searchedTodos}
@@ -63,19 +65,27 @@ const App = () => {
         onLoading={() => <TodosLoading />}
         render={(todo) => (
           <TodoItem
-            key={todo.text}
+            key={todo.id}
+            id={todo.id}
             text={todo.text}
             complete={todo.completed}
             onComplete={onComplete}
             onDelete={onDelete}
+            onEdit={onEdit}
           />
         )}
       >
       </TodoList>
 
+{/*       <Link to='/new'>
+        <CreateTodoButton
+          createButtonHandler={createButtonHandler}
+        />
+      </Link> */}
+
       {showModal && (
         <Modal>
-          <TodoForm 
+          <TodoForm
             onSubmit={onSubmit}
             onCancel={onCancel}
             taskTextHandler={taskTextHandler}
@@ -83,15 +93,15 @@ const App = () => {
         </Modal>
       )}
 
-      <CreateTodoButton 
+      <CreateTodoButton
         createButtonHandler={createButtonHandler}
       />
 
-      <ChangeStorageWithListener 
+      <ChangeStorageWithListener
         sincronize={sincronize}
       />
     </>
   );
 };
 
-export default App;
+export default HomePage;

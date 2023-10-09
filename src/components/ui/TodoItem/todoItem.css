@@ -25,6 +25,7 @@
 }
 
 .check-icon {
+    color: white;
     margin: auto 0;
     width: 10%;
     cursor: pointer;
@@ -52,8 +53,30 @@
     transition: all 0.5s;
 }
 
+.edit-link {
+    margin: auto 0.5vw;
+    width: 6%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.edit-icon {
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.5s;
+    color: white;
+}
+
 .delete-icon:hover {
     color: #EF5350;
+    transform: scale(1.3);
+}
+
+.edit-icon:hover {
+    color: #7986CB;
     transform: scale(1.3);
 }
 
