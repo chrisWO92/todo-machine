@@ -77,22 +77,6 @@ const HomePage = () => {
       >
       </TodoList>
 
-{/*       <Link to='/new'>
-        <CreateTodoButton
-          createButtonHandler={createButtonHandler}
-        />
-      </Link> */}
-
-{/*       {showModal && (
-        <Modal>
-          <TodoForm
-            onSubmit={onSubmit}
-            onCancel={onCancel}
-            taskTextHandler={taskTextHandler}
-          />
-        </Modal>
-      )} */}
-
       <CreateTodoButton
         createButtonHandler={createButtonHandler}
       />

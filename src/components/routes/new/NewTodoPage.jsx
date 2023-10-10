@@ -37,6 +37,8 @@ const NewTodoPage = () => {
     return (
       <Modal>
         <TodoForm
+          label='Agregue una nueva tarea'
+          buttonLabel='Agregar'
           onSubmit={onSubmit}
           onCancel={onCancel}
           taskTextHandler={taskTextHandler}
@@ -44,8 +46,6 @@ const NewTodoPage = () => {
       </Modal>
     )
   }
-
-  
 }
 
 export default NewTodoPage
