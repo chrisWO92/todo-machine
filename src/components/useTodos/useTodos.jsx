@@ -70,23 +70,29 @@ const useTodos = () => {
   const onAdd = (text) => {
     
     if (text !== "") {
+      
       const id = newTodoId(todos);
+      console.log('id: ', id)
       const newTodos = [...todos];
+      console.log('newTodos anterior: ', newTodos)
+      console.log('todos anterior: ', todos)
       newTodos.push({
         text: text,
         completed: false,
         id
       });
+      console.log('newTodos posterior: ', newTodos)
+      console.log('todos posterior: ', todos)
       saveTodos(newTodos);
     }
-    setShowModal((prevState) => !prevState);
+    //setShowModal((prevState) => !prevState);
     setNewTextTodo("");
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
     onAdd(newTextTodo);
-    //navigate('/')
+    navigate('/')
   };
 
   const taskTextHandler = (e) => {
@@ -101,8 +107,8 @@ const useTodos = () => {
 
   const createButtonHandler = () => {
     setValueSearch("");
-    //navigate('/new')
-    setShowModal((prevState) => !prevState);
+    navigate('/new')
+    //setShowModal((prevState) => !prevState);
   };
 
   const estados =  {

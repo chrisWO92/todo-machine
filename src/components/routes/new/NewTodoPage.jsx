@@ -31,15 +31,21 @@ const NewTodoPage = () => {
     sincronize,
   } = actualizadores
 
-  return (
-    <Modal>
-      <TodoForm
-        onSubmit={onSubmit}
-        onCancel={onCancel}
-        taskTextHandler={taskTextHandler}
-      />
-    </Modal>
-  )
+  if (loading) {
+    return <p>Cargando</p>
+  } else {
+    return (
+      <Modal>
+        <TodoForm
+          onSubmit={onSubmit}
+          onCancel={onCancel}
+          taskTextHandler={taskTextHandler}
+        />
+      </Modal>
+    )
+  }
+
+  
 }
 
 export default NewTodoPage

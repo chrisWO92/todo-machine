@@ -83,7 +83,7 @@ const HomePage = () => {
         />
       </Link> */}
 
-      {showModal && (
+{/*       {showModal && (
         <Modal>
           <TodoForm
             onSubmit={onSubmit}
@@ -91,7 +91,7 @@ const HomePage = () => {
             taskTextHandler={taskTextHandler}
           />
         </Modal>
-      )}
+      )} */}
 
       <CreateTodoButton
         createButtonHandler={createButtonHandler}
