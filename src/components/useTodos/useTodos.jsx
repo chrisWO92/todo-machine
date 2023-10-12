@@ -17,8 +17,8 @@ const useTodos = () => {
   const [totalTodos, setTotalTodos] = useState(0);
   const [valueSearch, setValueSearch] = useState("");
   const [showModal, setShowModal] = useState(false);
-  const [editMode, setEditMode] = useState(false);
-  const [newTextTodo, setNewTextTodo] = useState("");
+  //const [editMode, setEditMode] = useState(false);
+
   
 
   let searchedTodos = [];
@@ -56,6 +56,12 @@ const useTodos = () => {
     saveTodos(newTodos);
   };
 
+  const getTodo = (id) => {
+    let index = todos.findIndex((todo) => todo.id === id);
+    //console.log(index)
+    return todos[index]
+  }
+
   const onDelete = (id) => {
     let index = todos.findIndex((todo) => todo.id === id);
     const newTodos = [...todos];
@@ -63,47 +69,34 @@ const useTodos = () => {
     saveTodos(newTodos);
   };
 
-  const onEdit = () => {
-    setShowModal((prevState) => !prevState);
+  const onEdit = (id, text) => {
+    console.log('id: ', id)
+    console.log('text: ', text)
+    let index = todos.findIndex((todo) => todo.id === id);
+    console.log('todos: ', todos)
+    console.log('index: ', index)
+    const newTodos = [...todos];
+    newTodos[index].text = text
+    saveTodos(newTodos);
   }
 
-  const onAdd = (text) => {
-    
-    if (text !== "") {
-      
+  const onAdd = (text) => {  
+    console.log(todos)  
+    console.log(text)
+    if (text !== "") {      
       const id = newTodoId(todos);
-      console.log('id: ', id)
       const newTodos = [...todos];
-      console.log('newTodos anterior: ', newTodos)
-      console.log('todos anterior: ', todos)
       newTodos.push({
         text: text,
         completed: false,
         id
       });
-      console.log('newTodos posterior: ', newTodos)
-      console.log('todos posterior: ', todos)
       saveTodos(newTodos);
     }
-    //setShowModal((prevState) => !prevState);
-    setNewTextTodo("");
+    //setNewTextTodo("");
   };
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    onAdd(newTextTodo);
-    navigate('/')
-  };
 
-  const taskTextHandler = (e) => {
-    setNewTextTodo(e.target.value);
-  };
-
-  const onCancel = () => {
-    //setShowModal((prevState) => !prevState);
-    setNewTextTodo("");
-    navigate('/')
-  };
 
   const createButtonHandler = () => {
     setValueSearch("");
@@ -119,6 +112,8 @@ const useTodos = () => {
     loading,
     error,
     showModal,
+    getTodo,
+    todos,
   }
 
   const actualizadores = {
@@ -126,11 +121,9 @@ const useTodos = () => {
     onComplete,
     onDelete,
     onEdit,    
-    onCancel,
-    taskTextHandler,
-    onSubmit,
     createButtonHandler,
     sincronize,
+    onAdd
   }
 
   return {

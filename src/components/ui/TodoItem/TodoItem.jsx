@@ -1,11 +1,12 @@
 import React from "react";
 import "./todoItem.css";
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AiOutlineCheck } from "react-icons/ai";
 import { GiCancel } from "react-icons/gi";
 import { AiFillEdit } from "react-icons/ai"
 
-const TodoItem = ({ text, id, complete, onComplete, onDelete, onEdit }) => {
+const TodoItem = ({ todo, text, id, complete, onComplete, onDelete, onEdit, getTodo }) => {
+  const navigate = useNavigate()
   return (
     <>
       <li className="task">
@@ -17,7 +18,14 @@ const TodoItem = ({ text, id, complete, onComplete, onDelete, onEdit }) => {
           {text}
         </p>
         {/* <AiFillEdit className="edit-icon"><Link to='/new' /></AiFillEdit> */}
-        <Link to={'/edit/:' +  id} className="edit-link"><AiFillEdit className="edit-icon"/></Link>
+        <AiFillEdit 
+          className="edit-icon" 
+          onClick={() => {navigate('/edit/' + id, 
+            {
+              state: {todo}
+            }
+          )}}
+          />
         <GiCancel className="delete-icon" onClick={() => onDelete(id)} />
       </li>
     </>

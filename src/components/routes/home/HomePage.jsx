@@ -27,6 +27,7 @@ const HomePage = () => {
     loading,
     error,
     showModal,
+    getTodo
   } = estados
 
   const {
@@ -65,6 +66,7 @@ const HomePage = () => {
         onLoading={() => <TodosLoading />}
         render={(todo) => (
           <TodoItem
+            todo={todo}
             key={todo.id}
             id={todo.id}
             text={todo.text}
@@ -72,6 +74,7 @@ const HomePage = () => {
             onComplete={onComplete}
             onDelete={onDelete}
             onEdit={onEdit}
+            getTodo={getTodo}
           />
         )}
       >

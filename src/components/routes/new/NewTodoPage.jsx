@@ -2,9 +2,13 @@ import React from 'react'
 import Modal from '../../ui/Modal/Modal'
 import TodoForm from '../../ui/TodoForm/TodoForm'
 import { useTodos } from '../../useTodos/useTodos'
+import { useLocation } from 'react-router-dom'
 
 const NewTodoPage = () => {
 
+  const location = useLocation()
+
+  console.log(location)
   const {
     estados, actualizadores
   } = useTodos();
@@ -17,6 +21,8 @@ const NewTodoPage = () => {
     loading,
     error,
     showModal,
+    todos, 
+    newTextTodo
   } = estados
 
   const {
@@ -25,27 +31,26 @@ const NewTodoPage = () => {
     onDelete,
     onEdit,
     onCancel,
+    onAdd,
     taskTextHandler,
     onSubmit,
     createButtonHandler,
     sincronize,
   } = actualizadores
 
-  if (loading) {
-    return <p>Cargando</p>
-  } else {
+    //console.log(todos)
+
     return (
       <Modal>
         <TodoForm
           label='Agregue una nueva tarea'
           buttonLabel='Agregar'
-          onSubmit={onSubmit}
-          onCancel={onCancel}
-          taskTextHandler={taskTextHandler}
+          submitEvent={(text) => onAdd(text)}
+          loading={loading}
+          //todos={location.state.todos}
         />
       </Modal>
     )
-  }
 }
 
 export default NewTodoPage

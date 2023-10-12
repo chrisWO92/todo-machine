@@ -53,21 +53,13 @@
     transition: all 0.5s;
 }
 
-.edit-link {
-    margin: auto 0.5vw;
-    width: 6%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
 
 .edit-icon {
-    height: 100%;
-    width: 100%;
+    margin: auto ;
+    width: 13%;
     cursor: pointer;
+    font-size: 1.2vw;
     transition: all 0.5s;
-    color: white;
 }
 
 .delete-icon:hover {

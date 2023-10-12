@@ -60,7 +60,7 @@ const useLocalStorage = (itemName, defaultValue) => {
           parsedItem = JSON.parse(localStorageItem);
         }
         onSuccess(parsedItem)
-      }, 3000);
+      }, 1000);
     } catch (err) {
       onError(err)
     }
