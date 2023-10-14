@@ -5,32 +5,23 @@ import Modal from '../../ui/Modal/Modal';
 import TodoForm from '../../ui/TodoForm/TodoForm';
 
 const EditTodoPage = () => {
+
   const params = useParams()
   let id = Number(params.id)
+  
   const location = useLocation()
-  console.log(location)
+    
   const {
     estados, actualizadores
   } = useTodos();
 
   const {
-    searchedTodos,
-    completedTodos,
-    totalTodos,
-    valueSearch,
     loading,
-    error,
-    showModal,
-    getTodo,
+    getTodo
   } = estados
 
   const {
-    onSearchValueChange,
-    onComplete,
-    onDelete,
-    onEdit,
-    createButtonHandler,
-    sincronize,
+    onEdit
   } = actualizadores
 
   let todoText
@@ -39,7 +30,7 @@ const EditTodoPage = () => {
     todoText = location.state.todo.text
   } else {
     if (loading) {
-      return <p>Cargando</p>
+      return <p>Cargando...</p>
     } else {
       todoText = getTodo(id).text
     }
@@ -57,25 +48,6 @@ const EditTodoPage = () => {
       />
     </Modal>
   )
-/* 
-  if (loading) {
-    return <p>Cargando</p>
-  } else {
-    let todoText = getTodo(id).text
-    return (
-      <Modal>
-        <TodoForm
-          id={id}
-          value={todoText}
-          label='Edite la tarea'
-          buttonLabel='Editar'
-          onSubmit={onSubmit}
-          onCancel={onCancel}
-          taskTextHandler={taskTextHandler}
-        />
-      </Modal>
-    )
-  } */
 }
 
 

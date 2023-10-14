@@ -4,38 +4,27 @@ import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useTodos } from "../../useTodos/useTodos";
 
 const TodoForm = ({ loading, todos, label, id, defaultText, buttonLabel, submitEvent }) => {
+  
+  const navigate = useNavigate()
   const [newTextTodo, setNewTextTodo] = useState(defaultText || "");
-  console.log(newTextTodo)
+  
   const taskTextHandler = (e) => {
     setNewTextTodo(e.target.value);
-    console.log(newTextTodo)
   };
 
   const onCancel = () => {
-    //setShowModal((prevState) => !prevState);
     setNewTextTodo("");
     navigate('/')
   };
-  console.log(todos)
-  const navigate = useNavigate()
-  const {estados, actualizadores} = useTodos()
-  console.log(estados)
-  console.log(actualizadores)
-  //const {newTextTodo} = estados
-  console.log(newTextTodo)
-  //console.log(value)
+
 
   const onSubmit = (e) => {
     e.preventDefault();
-    //console.log(newTextTodo)
     if (newTextTodo !== "") {
       submitEvent(newTextTodo);
       setNewTextTodo("");   
     }
-/*     submitEvent(newTextTodo);
-      setNewTextTodo("");  */   
     navigate('/')    
-
   };
 
   return (

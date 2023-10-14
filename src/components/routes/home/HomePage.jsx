@@ -7,12 +7,9 @@ import TodoList from "../../ui/TodoList/TodoList";
 import TodoLoading from "../../ui/TodoLoading/TodoLoading";
 import TodoItem from "../../ui/TodoItem/TodoItem";
 import CreateTodoButton from "../../ui/CreateTodoButton/CreateTodoButton";
-import Modal from "../../ui/Modal/Modal";
-import TodoForm from "../../ui/TodoForm/TodoForm";
 import { useTodos } from "../../useTodos/useTodos";
 import TodosLoading from "../../ui/TodosLoading/TodosLoading";
 import ChangeStorageWithListener from "../../ui/ChangeStorage/ChangeStorage";
-import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const {
@@ -26,7 +23,6 @@ const HomePage = () => {
     valueSearch,
     loading,
     error,
-    showModal,
     getTodo
   } = estados
 
@@ -35,9 +31,6 @@ const HomePage = () => {
     onComplete,
     onDelete,
     onEdit,
-    onCancel,
-    taskTextHandler,
-    onSubmit,
     createButtonHandler,
     sincronize,
   } = actualizadores

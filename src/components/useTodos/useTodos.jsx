@@ -13,20 +13,16 @@ const useTodos = () => {
     error,
     sincronize
   } = useLocalStorage("TODOS_V2", []);
+
   const [completedTodos, setCompletedTodos] = useState(0);
   const [totalTodos, setTotalTodos] = useState(0);
   const [valueSearch, setValueSearch] = useState("");
-  const [showModal, setShowModal] = useState(false);
-  //const [editMode, setEditMode] = useState(false);
-
-  
 
   let searchedTodos = [];
 
   useEffect(() => {
     setCompletedTodos(todos.filter((todo) => !!todo.completed).length);
     setTotalTodos(todos.length);
-    //console.log(todos)
   }, [todos]);
 
   const onSearchValueChange = (e) => {
@@ -45,20 +41,15 @@ const useTodos = () => {
   
 
   const onComplete = (id, complete) => {
-    console.log(id)
     complete = !complete;
     let index = todos.findIndex((todo) => todo.id === id);
-    console.log('index: ', index)
-    const newTodos = [...todos];
-    console.log('newTodos: ', newTodos)
-    console.log('todos: ', todos)     
+    const newTodos = [...todos];    
     newTodos[index].completed = !newTodos[index].completed;
     saveTodos(newTodos);
   };
 
   const getTodo = (id) => {
     let index = todos.findIndex((todo) => todo.id === id);
-    //console.log(index)
     return todos[index]
   }
 
@@ -70,19 +61,13 @@ const useTodos = () => {
   };
 
   const onEdit = (id, text) => {
-    console.log('id: ', id)
-    console.log('text: ', text)
     let index = todos.findIndex((todo) => todo.id === id);
-    console.log('todos: ', todos)
-    console.log('index: ', index)
     const newTodos = [...todos];
     newTodos[index].text = text
     saveTodos(newTodos);
   }
 
   const onAdd = (text) => {  
-    console.log(todos)  
-    console.log(text)
     if (text !== "") {      
       const id = newTodoId(todos);
       const newTodos = [...todos];
@@ -93,15 +78,11 @@ const useTodos = () => {
       });
       saveTodos(newTodos);
     }
-    //setNewTextTodo("");
   };
-
-
 
   const createButtonHandler = () => {
     setValueSearch("");
     navigate('/new')
-    //setShowModal((prevState) => !prevState);
   };
 
   const estados =  {
@@ -111,7 +92,6 @@ const useTodos = () => {
     valueSearch,
     loading,
     error,
-    showModal,
     getTodo,
     todos,
   }

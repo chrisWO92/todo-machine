@@ -3,8 +3,6 @@ import { Routes, Route, HashRouter } from 'react-router-dom'
 import HomePage from './home/HomePage'
 import NewTodoPage from './new/NewTodoPage'
 import EditTodoPage from './edit/EditTodoPage'
-import Modal from '../ui/Modal/Modal'
-import TodoForm from '../ui/TodoForm/TodoForm'
 
 const App = () => {
   return (
