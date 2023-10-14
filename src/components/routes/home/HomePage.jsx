@@ -1,5 +1,6 @@
 import React from "react";
 import "../App.css";
+import { useSearchParams } from 'react-router-dom'
 import TodoHeader from "../../ui/TodoHeader/TodoHeader";
 import TodoCounter from "../../ui/TodoCounter/TodoCounter";
 import TodoSearch from "../../ui/TodoSearch/TodoSearch";
@@ -10,20 +11,29 @@ import CreateTodoButton from "../../ui/CreateTodoButton/CreateTodoButton";
 import { useTodos } from "../../useTodos/useTodos";
 import TodosLoading from "../../ui/TodosLoading/TodosLoading";
 import ChangeStorageWithListener from "../../ui/ChangeStorage/ChangeStorage";
+import { useEffect } from "react";
 
 const HomePage = () => {
   const {
     estados, actualizadores
   } = useTodos();
 
+/*   const params = useParams()
+  const search = params.search || ''
+  console.log(search) */
+/*   useEffect(() => {
+    navigate('/' + search)
+  }, [search]) */
+
   const {
-    searchedTodos,
+    //searchedTodos,
     completedTodos,
     totalTodos,
     valueSearch,
     loading,
     error,
-    getTodo
+    getTodo, 
+    todos
   } = estados
 
   const {
@@ -33,7 +43,29 @@ const HomePage = () => {
     onEdit,
     createButtonHandler,
     sincronize,
+    filter
   } = actualizadores
+
+  const [searchParams, setSearchParams] = useSearchParams()
+  const search = searchParams.get('search')
+
+  const textSearch = search || valueSearch
+
+/*   if (loading) {
+    return <p>Cargando...</p>
+  } else {
+    console.log(todos)
+  } */
+
+  console.log(todos)
+
+  let searchedTodos = filter(textSearch)
+
+  //filter(textSearch)
+  console.log(search)
+  console.log(valueSearch)
+  console.log(textSearch)
+  console.log(searchedTodos)
 
   return (
     <>
@@ -43,8 +75,10 @@ const HomePage = () => {
           completedTodos={completedTodos}
         />
         <TodoSearch
-          valueSearch={valueSearch}
+          valueSearch={textSearch}
+          setSearchParams={setSearchParams}
           onSearchValueChange={onSearchValueChange}
+          filter={filter}
         />
       </TodoHeader>
 
