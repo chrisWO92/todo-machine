@@ -18,7 +18,7 @@ const useTodos = () => {
   const [totalTodos, setTotalTodos] = useState(0);
   const [valueSearch, setValueSearch] = useState("");
 
-  let searchedTodos = [];
+  //let searchedTodos;
 
   useEffect(() => {
     setCompletedTodos(todos.filter((todo) => !!todo.completed).length);
@@ -27,9 +27,41 @@ const useTodos = () => {
 
   const onSearchValueChange = (e) => {
     setValueSearch(e.target.value);
+    console.log(valueSearch)
   };
 
-  if (valueSearch.length === 0) {
+/*   const filter = () => {
+    if (valueSearch.length === 0) {
+      searchedTodos = todos;
+    } else {
+      searchedTodos = todos.filter((todo) => {
+        const todoText = todo.text.toLowerCase();
+        const searchText = valueSearch.toLowerCase();
+        return todoText.includes(searchText);
+      });
+    }
+    console.log('hola')
+  } */
+
+  const filter = (text) => {
+    console.log(text)
+    let filteredTodos
+    if (text.length === 0 || text === null) {
+      filteredTodos = todos 
+      return filteredTodos
+    } else {
+      filteredTodos = todos.filter((todo) => {
+        const todoText = todo.text.toLowerCase();
+        const searchText = text.toLowerCase();
+        return todoText.includes(searchText);
+      });
+    }
+    console.log('filteredTodos: ', filteredTodos)
+    return filteredTodos;  
+    
+  }
+
+/*   if (valueSearch.length === 0) {
     searchedTodos = todos;
   } else {
     searchedTodos = todos.filter((todo) => {
@@ -37,7 +69,7 @@ const useTodos = () => {
       const searchText = valueSearch.toLowerCase();
       return todoText.includes(searchText);
     });
-  }
+  } */
   
 
   const onComplete = (id, complete) => {
@@ -86,7 +118,7 @@ const useTodos = () => {
   };
 
   const estados =  {
-    searchedTodos,
+    //searchedTodos,
     completedTodos,
     totalTodos,
     valueSearch,
@@ -103,7 +135,8 @@ const useTodos = () => {
     onEdit,    
     createButtonHandler,
     sincronize,
-    onAdd
+    onAdd,
+    filter
   }
 
   return {
@@ -121,4 +154,4 @@ const newTodoId = (todoList) => {
   return idMax + 1
 }
 
-export { useTodos };
+export { useTodos }

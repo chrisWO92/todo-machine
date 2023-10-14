@@ -10,6 +10,7 @@ const TodoForm = ({ loading, todos, label, id, defaultText, buttonLabel, submitE
   
   const taskTextHandler = (e) => {
     setNewTextTodo(e.target.value);
+    console.log(newTextTodo)
   };
 
   const onCancel = () => {
