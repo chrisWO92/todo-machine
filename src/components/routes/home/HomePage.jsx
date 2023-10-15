@@ -11,22 +11,13 @@ import CreateTodoButton from "../../ui/CreateTodoButton/CreateTodoButton";
 import { useTodos } from "../../useTodos/useTodos";
 import TodosLoading from "../../ui/TodosLoading/TodosLoading";
 import ChangeStorageWithListener from "../../ui/ChangeStorage/ChangeStorage";
-import { useEffect } from "react";
 
 const HomePage = () => {
   const {
     estados, actualizadores
   } = useTodos();
 
-/*   const params = useParams()
-  const search = params.search || ''
-  console.log(search) */
-/*   useEffect(() => {
-    navigate('/' + search)
-  }, [search]) */
-
   const {
-    //searchedTodos,
     completedTodos,
     totalTodos,
     valueSearch,
@@ -48,24 +39,9 @@ const HomePage = () => {
 
   const [searchParams, setSearchParams] = useSearchParams()
   const search = searchParams.get('search')
-
   const textSearch = search || valueSearch
-
-/*   if (loading) {
-    return <p>Cargando...</p>
-  } else {
-    console.log(todos)
-  } */
-
-  console.log(todos)
-
   let searchedTodos = filter(textSearch)
 
-  //filter(textSearch)
-  console.log(search)
-  console.log(valueSearch)
-  console.log(textSearch)
-  console.log(searchedTodos)
 
   return (
     <>

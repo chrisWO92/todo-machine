@@ -18,8 +18,6 @@ const useTodos = () => {
   const [totalTodos, setTotalTodos] = useState(0);
   const [valueSearch, setValueSearch] = useState("");
 
-  //let searchedTodos;
-
   useEffect(() => {
     setCompletedTodos(todos.filter((todo) => !!todo.completed).length);
     setTotalTodos(todos.length);
@@ -29,19 +27,6 @@ const useTodos = () => {
     setValueSearch(e.target.value);
     console.log(valueSearch)
   };
-
-/*   const filter = () => {
-    if (valueSearch.length === 0) {
-      searchedTodos = todos;
-    } else {
-      searchedTodos = todos.filter((todo) => {
-        const todoText = todo.text.toLowerCase();
-        const searchText = valueSearch.toLowerCase();
-        return todoText.includes(searchText);
-      });
-    }
-    console.log('hola')
-  } */
 
   const filter = (text) => {
     console.log(text)
@@ -118,7 +103,6 @@ const useTodos = () => {
   };
 
   const estados =  {
-    //searchedTodos,
     completedTodos,
     totalTodos,
     valueSearch,

@@ -3,7 +3,6 @@ import { Routes, Route, HashRouter } from 'react-router-dom'
 import HomePage from './home/HomePage'
 import NewTodoPage from './new/NewTodoPage'
 import EditTodoPage from './edit/EditTodoPage'
-import Search from './search/Search'
 
 const App = () => {
   return (

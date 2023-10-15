@@ -1,7 +1,7 @@
 import React from "react";
 import "./todoSearch.css";
 
-const TodoSearch = ({ valueSearch, onSearchValueChange, loading, setSearchParams, filter }) => {
+const TodoSearch = ({ valueSearch, onSearchValueChange, loading, setSearchParams }) => {
   return (
     <>
       <div id="search-wrapper">

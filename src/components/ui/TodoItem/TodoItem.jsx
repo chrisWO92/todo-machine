@@ -1,6 +1,6 @@
 import React from "react";
 import "./todoItem.css";
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { AiOutlineCheck } from "react-icons/ai";
 import { GiCancel } from "react-icons/gi";
 import { AiFillEdit } from "react-icons/ai"
@@ -17,7 +17,6 @@ const TodoItem = ({ todo, text, id, complete, onComplete, onDelete, onEdit, getT
         <p className={complete ? `task-text task-text-completed` : `task-text`}>
           {text}
         </p>
-        {/* <AiFillEdit className="edit-icon"><Link to='/new' /></AiFillEdit> */}
         <AiFillEdit 
           className="edit-icon" 
           onClick={() => {navigate('/edit/' + id, 
