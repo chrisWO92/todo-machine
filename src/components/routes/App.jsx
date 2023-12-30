@@ -4,6 +4,10 @@ import HomePage from './home/HomePage'
 import NewTodoPage from './new/NewTodoPage'
 import EditTodoPage from './edit/EditTodoPage'
 
+/* 
+En el componente App se encierran las rutas que se querrán mostrar dentro de un
+HashRouter.
+*/
 const App = () => {
   return (
     <HashRouter>

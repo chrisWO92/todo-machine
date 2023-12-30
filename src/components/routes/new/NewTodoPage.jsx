@@ -8,7 +8,6 @@ const NewTodoPage = () => {
 
   const location = useLocation()
 
-  console.log(location)
   const {
     estados, actualizadores
   } = useTodos();
@@ -38,8 +37,6 @@ const NewTodoPage = () => {
     sincronize,
   } = actualizadores
 
-    //console.log(todos)
-
     return (
       <Modal>
         <TodoForm
@@ -47,7 +44,6 @@ const NewTodoPage = () => {
           buttonLabel='Agregar'
           submitEvent={(text) => onAdd(text)}
           loading={loading}
-          //todos={location.state.todos}
         />
       </Modal>
     )

@@ -26,6 +26,11 @@ const EditTodoPage = () => {
 
   let todoText
 
+  /* 
+  Este condicional verifica si loading === true para
+  mostrar una animación de "cargando" o para mostrar
+  el todo que se quiere editar
+  */
   if (location.state?.todo) {
     todoText = location.state.todo.text
   } else {

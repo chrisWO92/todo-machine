@@ -37,12 +37,20 @@ const HomePage = () => {
     filter
   } = actualizadores
 
+  /* 
+  Se usa el hook useSearchParams() para que aparezca el texto de búsqueda en la ruta
+  de navegación, y para poder capturar esta información directamente desde la ruta
+  mediante la propiedad "params" y el filtro "search"
+  */
   const [searchParams, setSearchParams] = useSearchParams()
   const search = searchParams.get('search')
   const textSearch = search || valueSearch
   let searchedTodos = filter(textSearch)
 
-
+  /* 
+  En el HomePage se define la apariencia de la página principal de la aplicación,
+  y se hacce la "repartición" de todas las funciones y estados a donde se necesiten.
+  */
   return (
     <>
       <TodoHeader loading={loading}>
@@ -63,6 +71,10 @@ const HomePage = () => {
         searchedTodos={searchedTodos}
         error={error}
         totalTodos={totalTodos}
+        /*
+        Observar que en las siguientes propiedades se definen funciones que renderizan
+        elementos, seguramente dependiendo del valor de algún parámetro 
+         */
         onError={() => <p className="msg error">Error</p>}
         onEmptySearch={() => <p className="msg">Sin coincidencias!</p>}
         onAddFirstTask={() => <p className="msg">Agrega la primera tarea!</p>}
