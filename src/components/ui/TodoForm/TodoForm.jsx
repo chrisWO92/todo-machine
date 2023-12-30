@@ -2,22 +2,23 @@ import React, { useState } from "react";
 import "./todoForm.css";
 import { useNavigate } from "react-router-dom";
 
-const TodoForm = ({ loading, todos, label, id, defaultText, buttonLabel, submitEvent }) => {
+const TodoForm = ({ loading, label, defaultText, buttonLabel, submitEvent }) => {
   
   const navigate = useNavigate()
   const [newTextTodo, setNewTextTodo] = useState(defaultText || "");
   
+  // Función para actualizar texto del campo de un textarea
   const taskTextHandler = (e) => {
     setNewTextTodo(e.target.value);
-    console.log(newTextTodo)
   };
 
+  // Para cancelar edición o creación de un nuevo todo e ir a home
   const onCancel = () => {
     setNewTextTodo("");
     navigate('/')
   };
 
-
+  // Función para guardar el texto como un todo
   const onSubmit = (e) => {
     e.preventDefault();
     if (newTextTodo !== "") {
